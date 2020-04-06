@@ -4,12 +4,12 @@ const config = require('./config/config.json');
 
 let token = '';
 
-var env = process.env.NODE_ENV || 'dev';
-if(env == 'dev'){
-    token = config.token;
+
+if(process.env.NODE_ENV == 'prod'){
+    token = process.env.TOKEN;
 }
 else{
-    token = process.env.TOKEN
+    token = config.token;
 }
 var re = /[0-9A-Fa-f]{6}/g;
 
