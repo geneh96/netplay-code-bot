@@ -1,6 +1,5 @@
 const Disord = require('discord.js');
 const client = new Disord.Client();
-const config = require('./config/config.json');
 
 let token = '';
 
@@ -9,6 +8,7 @@ if(process.env.NODE_ENV == 'prod'){
     token = process.env.TOKEN;
 }
 else{
+    const config = require('./config/config.json');
     token = config.token;
 }
 var re = /[0-9A-Fa-f]{6}/g;
