@@ -1,8 +1,16 @@
 const Disord = require('discord.js');
 const client = new Disord.Client();
+const config = require('./config/config.json');
 
-const token = 'Njk2NzM0NjI0NzA5MjE0MjI4.XotKxw.rg5v5rn4xYSh77t9LUn1qNzsT-Q';
+let token = '';
 
+var env = process.env.NODE_ENV || 'dev';
+if(env == 'dev'){
+    token = config.token;
+}
+else{
+    token = process.env.TOKEN
+}
 var re = /[0-9A-Fa-f]{6}/g;
 
 
