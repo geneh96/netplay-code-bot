@@ -11,12 +11,10 @@ else{
     const config = require('./config/config.json');
     token = config.token;
 }
-var re = /[0-9A-Fa-f]{6}/g;
-
 
 client.on('message', msg => {
 
-    if(msg.content.length==8 && re.test(msg.content)){
+    if(msg.content.length==8 &&(typeof(parseInt(msg.content, 16))=="number")){
         msg.channel.messages.fetch().then(messages=>{
             const botMessages = messages.filter(message=>message.author.bot && message.content.includes('melee/PM'));
             msg.channel.bulkDelete(botMessages)
