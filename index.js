@@ -14,7 +14,9 @@ else{
 
 client.on('message', msg => {
 
-    if(msg.content.length==8 && (!isNaN(`0x${msg.content}`))){
+    if(msg.content.length==8 
+        && (!isNaN(`0x${msg.content}`))
+        ){
         msg.channel.messages.fetch().then(messages=>{
             const botMessages = messages.filter(message=>message.author.bot && message.content.includes('melee/PM'));
             msg.channel.bulkDelete(botMessages)
